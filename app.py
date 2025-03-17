@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 import joblib
 import numpy as np
 from flask_cors import CORS
+import os
+print(os.path.exists("random_forest_olympics_model.joblib"))
 
 app = Flask(__name__)
 CORS(app)
