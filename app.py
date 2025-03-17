@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Load the model
-model = joblib.load('random_forest_olympics_model.joblib',mmap_mode=None,fix_imports=True)
+model = joblib.load('random_forest_olympics_model.joblib',mmap_mode=None)
 
 # List of expected features (Example: Fill in your actual feature names)
 sport_columns = [
