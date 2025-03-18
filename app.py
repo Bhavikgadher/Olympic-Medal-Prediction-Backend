@@ -2,14 +2,12 @@ from flask import Flask, request, jsonify
 import joblib
 import numpy as np
 from flask_cors import CORS
-import os
-print(os.path.exists("random_forest_olympics_model.joblib"))
 
 app = Flask(__name__)
 CORS(app)
 
 # Load the model
-model = joblib.load('random_forest_olympics_model.joblib',mmap_mode=None)
+model = joblib.load('./random_forest_olympics_model.joblib')
 
 # List of expected features (Example: Fill in your actual feature names)
 sport_columns = [
