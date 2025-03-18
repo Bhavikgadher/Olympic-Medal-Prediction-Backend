@@ -1,13 +1,15 @@
 from flask import Flask, request, jsonify
-import joblib
 import numpy as np
+import os
 from flask_cors import CORS
+import pickle
 
 app = Flask(__name__)
 CORS(app)
 
 # Load the model
-model = joblib.load('./random_forest_olympics_model.joblib')
+with open("model.pkl", "rb") as f:
+    model = pickle.load(f)
 
 # List of expected features (Example: Fill in your actual feature names)
 sport_columns = [
@@ -83,5 +85,6 @@ def predict():
 })
 
 # Run the app
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
